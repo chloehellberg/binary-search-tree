@@ -3,7 +3,48 @@ export default class BST {
     this.root = null;
   }
 
+ search(value) {
+   return true;
+ }
+
   insertNode(node) {
-    this.root = node;
+   this.root = node;
+  }
+
+  // insert(node) {
+  //   if (this.root === null) {
+  //     this.root = node;
+  //   } else if (this.root.data > node.data) {
+  //     this.root.left = node;
+  //   } else if (this.root.data < node.data) {
+  //     this.root.right = node;
+  //   }
+  // }
+
+  insert(insertedNode) {
+    if (this.root === null) {
+      this.root = insertedNode;
+    } else {
+      let currentNode = this.root;
+      while (true) {
+        if (currentNode.data > insertedNode.data) {
+          if (currentNode.left === null) {
+            currentNode.left = insertedNode;
+            return this;
+          } else {
+            currentNode = currentNode.left;
+          }
+        } else if (currentNode.data < insertedNode.data) {
+          if (currentNode.right === null) {
+            currentNode.right = insertedNode;
+            return this;
+          } else {
+            currentNode = currentNode.right
+          }
+        } else {
+          return this;
+        }
+      }
+    }
   }
 }
